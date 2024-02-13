@@ -1,6 +1,7 @@
 const {Router} = require('express')
 const  axios  = require('axios')
 const {Driver} = require('../db')
+const { Op } = require('sequelize');
 const {drivers} = require('../../api/db.json')
 const router = Router()
 
@@ -16,19 +17,37 @@ router.get('/', async(req, res) => {
 })
 
 //! get name
-router.get('/name', (req, res) => {
-    const {name} = req.query
-    console.log(`entre a /name, ${name}`)
+router.get('/name', async (req, res) => {
+    const { name } = req.query;
+    console.log(`Entré a /name, ${name}`);
+
     try {
+        // Buscar en la base de datos
+        const driverdb = await Driver.findAll({
+            where: {
+                name: {
+                    [Op.iLike]: `%${name.toLowerCase()}%`,
+                },
+            },
+        });
+
+        // Filtrar en el array local
         const driverapi = drivers.filter((driver) => {
-        if(driver.name.forename.toLowerCase() == name || driver.name.surname.toLowerCase() == name){
-            return driver;
-    }})
-    res.send(driverapi)
+            const forenameLower = driver.name.forename.toLowerCase();
+            const surnameLower = driver.name.surname.toLowerCase();
+            return forenameLower.includes(name.toLowerCase()) || surnameLower.includes(name.toLowerCase());
+        });
+
+        console.log('Driver DB:', driverdb);
+        console.log('Driver API:', driverapi);
+
+        // Enviar la combinación de resultados de la base de datos y del array local
+        res.send([...driverdb, ...driverapi]);
     } catch (error) {
-       res.send(error) 
+        console.error('Error al buscar conductores por nombre:', error);
+        res.status(500).send({ error: 'Error interno del servidor' });
     }
-    })
+});
 
 //! get id
 router.get('/:id', async(req, res) => {
