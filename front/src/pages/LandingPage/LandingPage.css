@@ -1,0 +1,36 @@
+/* LandingPage.css */
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+.landing-page {
+  position: relative;
+  overflow: hidden; /* Evita posibles espacios adicionales debido al overflow */
+}
+
+.background-video {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.start-race-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.5em;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-sizing: border-box;
+}
+
+.start-race-button:hover {
+  background-color: #333;
+  transform: translate(-50%, -50%) scale(1.1); /* Aplicar la transformación y centrar al mismo tiempo */
+}
