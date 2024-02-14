@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
+import HomePage from '../HomePage/homepage';
 import './LandingPage.css';
 
 const LandingPage = () => {
@@ -8,7 +10,9 @@ const LandingPage = () => {
         <source src="/background.mp4" type="video/mp4" />
         Tu navegador no soporta el tag de video.
       </video>
+      <Link to='/home'>
       <button className="start-race-button">Start Race</button>
+      </Link>
     </div>
   );
 };
