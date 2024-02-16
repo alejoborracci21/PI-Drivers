@@ -67,15 +67,15 @@ router.get('/:id', async(req, res) => {
 
 //! post drivers
 router.post('/', async(req, res) => {
-    const {name, lastname, description, image, nation, date} = req.body;
+    const {name, description, image, nation, teams, date} = req.body;
 
     
     try {
     const newdriver = await Driver.create({
         name: name,
-        lastname: lastname,
         description: description,
         image: image,
+        teams: teams,
         nation: nation,
         date: date,
     })

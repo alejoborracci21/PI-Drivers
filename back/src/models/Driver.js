@@ -11,12 +11,20 @@ module.exports = (sequelize) => {
       primaryKey: true,
     },
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSONB,
       allowNull: false,
-    },
-    lastname: {
-      type: DataTypes.STRING,
-      allowNull: false
+      validate: {
+        isObject(value) {
+          if (typeof value !== 'object') {
+            throw new Error('Name debe ser un objeto');
+          }
+        },
+        hasForenameSurname(value) {
+          if (!value.forename || !value.surname) {
+            throw new Error('Le falta la propiedad forename o surname');
+          }
+        },
+      },
     },
     description: {
       type: DataTypes.STRING,
@@ -31,6 +39,10 @@ module.exports = (sequelize) => {
       allowNull:false
     },
     date: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false
+    },
+    teams: {
       type: DataTypes.STRING,
       allowNull: false
     }

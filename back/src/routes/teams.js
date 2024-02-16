@@ -17,7 +17,7 @@ route.get('/', async (req, res) => {
     });
 
     //? Funcion para agregar los teams a la db
-    // const teamsAdded = await addTeamsToDatabase(allTeams); 
+    const teamsAdded = await addTeamsToDatabase(allTeams); 
 
     res.send(allTeams);
   } catch (error) {
