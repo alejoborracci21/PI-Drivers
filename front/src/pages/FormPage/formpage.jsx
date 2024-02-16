@@ -1,9 +1,12 @@
 import React from "react";
-
+import NavBar from "../../components/navbar/navbar";
 
 const FormPage = () =>{
     return(
-        <h1>soy la form page</h1>
+        <div>   
+            <NavBar></NavBar>
+            <h1>soy la form page</h1>
+        </div>
     )
 }
 

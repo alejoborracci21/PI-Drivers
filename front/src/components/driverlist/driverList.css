@@ -1,0 +1,33 @@
+/* Estilos adicionales para DriverList.css */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Otra opción: justify-content: flex-start; */
+  }
+  
+  .card {
+    width: 300px; /* O ajusta el tamaño que prefieras para cada card */
+    margin: 10px;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  /* Ajusta los estilos de .pageButton según sea necesario */
+  .pageButton {
+    margin: 0 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .pageButton.active {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
