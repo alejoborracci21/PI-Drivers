@@ -1,8 +1,6 @@
 const { DataTypes, UUIDV4 } = require('sequelize');
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
+
 module.exports = (sequelize) => {
-  // defino el modelo
   sequelize.define('Driver', {
     id: {
       type: DataTypes.UUID,
@@ -28,7 +26,7 @@ module.exports = (sequelize) => {
     },
     description: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     image: {
       type: DataTypes.STRING(40000),
@@ -36,16 +34,23 @@ module.exports = (sequelize) => {
     },
     nation: {
       type: DataTypes.STRING,
-      allowNull:false
+      allowNull: false,
     },
     date: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
-      allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     teams: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
-
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false,
+    },
+  }, {
+    hooks: {
+      beforeValidate: (driver, options) => {
+        if (!driver.image) {
+          driver.image = 'https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg';
+        }
+      },
+    },
   });
 };

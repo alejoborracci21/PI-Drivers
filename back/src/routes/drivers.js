@@ -25,9 +25,20 @@ router.get('/name', async (req, res) => {
         // Buscar en la base de datos
         const driverdb = await Driver.findAll({
             where: {
-                name: {
-                    [Op.iLike]: `%${name.toLowerCase()}%`,
-                },
+                [Op.or]: [
+                    // Buscar en la propiedad forename del objeto name
+                    {
+                        'name.forename': {
+                            [Op.iLike]: `%${name.toLowerCase()}%`,
+                        },
+                    },
+                    // Buscar en la propiedad surname del objeto name
+                    {
+                        'name.surname': {
+                            [Op.iLike]: `%${name.toLowerCase()}%`,
+                        },
+                    },
+                ],
             },
         });
 
