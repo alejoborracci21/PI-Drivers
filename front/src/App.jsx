@@ -5,12 +5,10 @@ import HomePage from './pages/HomePage/homepage';
 import FormPage from './pages/FormPage/formpage';
 import DetailPage from './pages/DetailPage/detailpage';
 import AboutMe from './pages/aboutpage/aboutme';
-
 function App() {
 
   return (
     <>
-      <div>
         <Routes>
         <Route path='/home' element={<HomePage/>}/>
         <Route path='/detail' element={<DetailPage/>}/>
@@ -18,7 +16,6 @@ function App() {
         <Route path='/create' element={<FormPage/>}/>
         <Route path='*' element={<LandingPage/>}/>
         </Routes>
-      </div>
     </>
   )
 }

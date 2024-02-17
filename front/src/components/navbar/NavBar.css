@@ -1,0 +1,32 @@
+/* styles/NavBar.css */
+
+.navbar-div {
+    background-color: #af0101;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    margin: 0;  /* Asegúrate de que no haya margen */
+    position: fixed;  /* Establece la posición fija para que siempre esté en la parte superior */
+    top: 0;  /* Fija la barra en la parte superior */
+    left: 0;
+    right: 0;
+    z-index: 1000;  /* Asegúrate de que la barra esté por encima de otros elementos */
+}
+
+.navbar-div a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    background-color: #2c3e50;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-div a:hover {
+    background-color: #1a242f;
+}

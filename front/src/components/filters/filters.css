@@ -1,0 +1,35 @@
+/* filters.css */
+
+.filters-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    margin-bottom: 12px; /* Añade margen inferior para espacio entre los labels */
+    font-weight: bold;
+  }
+  
+  select {
+    width: 220px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /* Añadido un estilo de foco para resaltar el filtro activo */
+    outline: none;
+  }
+  
+  select:hover,
+  select:focus {
+    border-color: #555;
+  }
+  
+  /* Estilo para opciones */
+  option {
+    padding: 10px;
+    margin-bottom: 8px;
+  }
+  
+  /* Agrega estilos adicionales según sea necesario */

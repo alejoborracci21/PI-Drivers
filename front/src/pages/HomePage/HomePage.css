@@ -1,0 +1,19 @@
+/* HomePage.css */
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  
+  .filters-and-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Resto de tus estilos para HomePage */
+  

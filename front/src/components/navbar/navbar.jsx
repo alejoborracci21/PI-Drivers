@@ -1,16 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import "./NavBar.css"; // Importa el archivo de estilos
 
 const NavBar = () => {
-    return(
-        <div>
-            <Link to='/home'><button>Home</button></Link>
-            <Link to='/create'><button>New driver</button></Link>
-            <Link to='/about'><button>About me</button></Link>
+    return (
+        <div className="navbar-div">
+            <Link to="/home">Home</Link>
+            <Link to="/create">New driver</Link>
+            <Link to="/about">About me</Link>
         </div>
-
-    )
+    );
 }
 
 export default NavBar;
