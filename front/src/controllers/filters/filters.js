@@ -1,9 +1,19 @@
-export const onTeamFilter = () => {
-    //funcion para filtrar por equipos
-    console.log("estoy en team filter")
-}
+// import React from "react";
+// import { useDispatch } from "react-redux";
+// import { Filter, orderByName, orderByDate } from "../../redux/actions";
 
-export const onSourceFilter = () => {
-    //funcion para filtrar por plataforma
-    console.log("Estoy en source filter")
-}
+
+// const dispatch = useDispatch()
+
+// export const onTeamFilter = (team) => {
+//     //funcion para filtrar por equipos
+//     console.log(team)
+
+//     dispatch(Filter(team))
+// }
+
+// export const onSourceFilter = (platform) => {
+//     //funcion para filtrar por plataforma
+//     console.log(platform)
+//     dispatch(Filter(platform))
+// }

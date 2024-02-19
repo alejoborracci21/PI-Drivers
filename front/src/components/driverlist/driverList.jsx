@@ -4,7 +4,7 @@ import DriverCard from "../drivercard/driverCard";
 import './driverList.css';
 
 const DriverList = ({ drivers }) => {
-  const itemsPerPage = 3;
+  const itemsPerPage = 9;
   const [currentPage, setCurrentPage] = useState(1);
 
   const handlePageChange = (pageNumber) => {

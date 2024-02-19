@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import axios from 'axios';
+import { FilterTeam, FilterPlatform, orderByDate, orderByName } from "../../redux/actions";
 import './filters.css'
+import { FILTER_TEAM } from "../../redux/actions/types";
 
-const Filters = ({ onTeamFilter, onSourceFilter }) => {
+const Filters = () => {
+  const dispatch = useDispatch()
   const [teams, setTeams] = useState([]);
   const [selectedTeam, setSelectedTeam] = useState("");
   const [selectedSource, setSelectedSource] = useState("");
@@ -23,7 +27,7 @@ const Filters = ({ onTeamFilter, onSourceFilter }) => {
   const handleTeamChange = (event) => {
     const selectedTeam = event.target.value;
     setSelectedTeam(selectedTeam);
-    onTeamFilter(selectedTeam);
+    dispatch(FilterTeam(selectedTeam));
   };
 
   const handleSourceChange = (event) => {
@@ -36,7 +40,7 @@ const Filters = ({ onTeamFilter, onSourceFilter }) => {
     <div>
       <label>Equipo:</label>
       <select value={selectedTeam} onChange={handleTeamChange}>
-        <option value="">Todos los Equipos</option>
+        <option value="all">Todos los Equipos</option>
         {teams.map((equipo, index) => (
           <option key={index} value={equipo}>
             {equipo}
@@ -46,7 +50,7 @@ const Filters = ({ onTeamFilter, onSourceFilter }) => {
 
       <label>Fuente:</label>
       <select value={selectedSource} onChange={handleSourceChange}>
-        <option value="">Todas las Fuentes</option>
+        <option value="all">Todas las Fuentes</option>
         <option value="api">API</option>
         <option value="database">Base de Datos</option>
       </select>

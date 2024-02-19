@@ -6,7 +6,7 @@ import NavBar from "../../components/navbar/navBar";
 import SearchBar from "../../components/searchbar/searchBar";
 import DriverList from "../../components/driverlist/driverlist";
 import Filters from "../../components/filters/filters";
-import { onSourceFilter, onTeamFilter } from "../../controllers/filters/filters";
+// import { onSourceFilter, onTeamFilter } from "../../controllers/filters/filters";
 import "./HomePage.css"; // Importa el archivo de estilos
 
 const HomePage = () => {
@@ -44,7 +44,7 @@ const HomePage = () => {
       <NavBar />
       <SearchBar onSearch={onSearch} />
       <div className="filters-and-list">
-        <Filters onTeamFilter={onTeamFilter} onSourceFilter={onSourceFilter} />
+        <Filters />
         <DriverList drivers={drivers.length > 0 ? drivers : allDrivers} />
       </div>
     </div>
