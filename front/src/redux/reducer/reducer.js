@@ -15,13 +15,22 @@ export default function reducer (state = initialstate, {type, payload}) {
                 alldrivers: payload
             };
         
-        case FILTER_TEAM:
-                {
-                    console.log(state)
-                    // const filtered = state.alldrivers.filter((driver) => driver.teams == payload)
-                    // console.log(filtered)
-                }
-            break;
+            case FILTER_TEAM:
+                const teamToFilter = payload.toLowerCase();
+                const filteredDrivers = state.alldrivers.filter((driver) => {
+                  if (driver.teams && typeof driver.teams === 'string') {
+                    // Dividir la cadena de equipos por comas y eliminar espacios en blanco
+                    const driverTeams = driver.teams.split(',').map(team => team.trim().toLowerCase());
+                    // Verificar si el equipo a filtrar está presente en los equipos del conductor
+                    return driverTeams.includes(teamToFilter);
+                  }
+                  return false; // Si driver.teams no es una cadena, no incluirlo en el filtro
+                });
+                return {
+                  ...state,
+                  drivers: filteredDrivers
+                };
+                break;
 
         case FILTER_PLATFORM:
                 {

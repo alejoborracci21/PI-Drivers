@@ -1,0 +1,24 @@
+/* DetailPage.css */
+
+.driver-details {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+.driver-details img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.driver-details h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.driver-details p {
+    font-size: 16px;
+    margin-bottom: 8px;
+}

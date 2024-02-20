@@ -7,22 +7,22 @@ import SearchBar from "../../components/searchbar/searchBar";
 import DriverList from "../../components/driverlist/driverlist";
 import Filters from "../../components/filters/filters";
 import { getAllDrivers } from "../../redux/actions";
-import { useDispatch } from "react-redux";
-// import { onSourceFilter, onTeamFilter } from "../../controllers/filters/filters";
-import "./HomePage.css"; // Importa el archivo de estilos
+import { useDispatch, useSelector } from "react-redux";
+import "./HomePage.css";
 
 const HomePage = () => {
+  // const {drivers} = useSelector((state) => state);
   const dispatch = useDispatch();
-  const [drivers, setDrivers] = useState([]);
-  const [allDrivers, setAllDrivers] = useState([]);
+  const [viewDrivers, setViewDrivers] = useState([]);
+  const [viewAllDrivers, setViewAllDrivers] = useState([]);
 
   const onSearch = async (index) => {
     try {
       const { data } = await axios(`http://localhost:3001/drivers/name?name=${index}`);
       if (data.length > 0) {
-        setDrivers(data);
+        setViewDrivers(data);
       } else {
-        window.alert('No se encontraron juegos con ese nombre.');
+        window.alert('No se encontraron conductores con ese nombre.');
       }
     } catch (error) {
       console.log(error);
@@ -32,9 +32,9 @@ const HomePage = () => {
   const fetchAllDrivers = async () => {
     try {
       const { data } = await axios('http://localhost:3001/drivers');
-      setAllDrivers(data);
+      setViewAllDrivers(data);
     } catch (error) {
-      console.log('error al iniciar los drivers:', error);
+      console.log('Error al obtener todos los conductores:', error);
     }
   };
 
@@ -43,9 +43,12 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    // Llamada a la función asincrónica para obtener conductores
     dispatch(getAllDrivers());
   }, [dispatch]);
+
+  // useEffect(() => {
+  //   console.log(drivers);
+  // }, [drivers]);
 
   return (
     <div className="home-container">
@@ -53,7 +56,7 @@ const HomePage = () => {
       <SearchBar onSearch={onSearch} />
       <div className="filters-and-list">
         <Filters />
-        <DriverList drivers={drivers.length > 0 ? drivers : allDrivers} />
+        <DriverList drivers={viewDrivers.length > 0 ? viewDrivers : viewAllDrivers} />
       </div>
     </div>
   );
