@@ -1,5 +1,4 @@
-import { FILTER_PLATFORM, FILTER_TEAM, ORDER_DATE, ORDER_NAME } from "../actions/types";
-
+import { FILTER_PLATFORM, FILTER_TEAM, ORDER_DATE, ORDER_NAME, SET_DRIVERS } from "../actions/types";
 
 const initialstate = {
     drivers: [],
@@ -9,10 +8,18 @@ const initialstate = {
 
 export default function reducer (state = initialstate, {type, payload}) {
     switch (type) {
+
+        case SET_DRIVERS:
+            return {
+                ...state,
+                alldrivers: payload
+            };
         
         case FILTER_TEAM:
                 {
-                    console.log(`type ${payload}`)
+                    console.log(state)
+                    // const filtered = state.alldrivers.filter((driver) => driver.teams == payload)
+                    // console.log(filtered)
                 }
             break;
 

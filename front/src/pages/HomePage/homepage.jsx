@@ -6,10 +6,13 @@ import NavBar from "../../components/navbar/navBar";
 import SearchBar from "../../components/searchbar/searchBar";
 import DriverList from "../../components/driverlist/driverlist";
 import Filters from "../../components/filters/filters";
+import { getAllDrivers } from "../../redux/actions";
+import { useDispatch } from "react-redux";
 // import { onSourceFilter, onTeamFilter } from "../../controllers/filters/filters";
 import "./HomePage.css"; // Importa el archivo de estilos
 
 const HomePage = () => {
+  const dispatch = useDispatch();
   const [drivers, setDrivers] = useState([]);
   const [allDrivers, setAllDrivers] = useState([]);
 
@@ -38,6 +41,11 @@ const HomePage = () => {
   useEffect(() => {
     fetchAllDrivers();
   }, []);
+
+  useEffect(() => {
+    // Llamada a la función asincrónica para obtener conductores
+    dispatch(getAllDrivers());
+  }, [dispatch]);
 
   return (
     <div className="home-container">

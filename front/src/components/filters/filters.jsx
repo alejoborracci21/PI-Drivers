@@ -33,7 +33,7 @@ const Filters = () => {
   const handleSourceChange = (event) => {
     const selectedSource = event.target.value;
     setSelectedSource(selectedSource);
-    onSourceFilter(selectedSource);
+    dispatch(FilterPlatform(selectedSource));
   };
 
   return (
