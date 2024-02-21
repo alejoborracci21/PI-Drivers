@@ -41,7 +41,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     teams: {
-      type: DataTypes.ARRAY(DataTypes.STRING),
+      type: DataTypes.STRING,
       allowNull: false,
     },
   }, {
