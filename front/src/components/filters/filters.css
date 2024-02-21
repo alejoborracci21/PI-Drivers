@@ -1,36 +1,33 @@
 /* filters.css */
 
-
 .filters-container {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-  }
-  
-  label {
-    margin-bottom: 12px; /* Añade margen inferior para espacio entre los labels */
-    font-weight: bold;
-  }
-  
-  select {
-    width: 220px;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    /* Añadido un estilo de foco para resaltar el filtro activo */
-    outline: none;
-  }
-  
-  select:hover,
-  select:focus {
-    border-color: #555;
-  }
-  
-  /* Estilo para opciones */
-  option {
-    padding: 10px;
-    margin-bottom: 8px;
-  }
-  
-  /* Agrega estilos adicionales según sea necesario */
+  display: flex;
+  justify-content: space-between; /* Para distribuir los labels horizontalmente */
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+label {
+  margin-bottom: 12px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+select {
+  width: 150px; /* Ajusta el ancho según sea necesario */
+  padding: 5px;
+  margin-right: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+select:hover,
+select:focus {
+  border-color: #555;
+}
+
+option {
+  padding: 10px;
+  margin-bottom: 8px;
+}

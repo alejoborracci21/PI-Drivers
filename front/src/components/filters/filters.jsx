@@ -9,6 +9,8 @@ const Filters = () => {
   const [teams, setTeams] = useState([]);
   const [selectedTeam, setSelectedTeam] = useState("");
   const [selectedSource, setSelectedSource] = useState("");
+  const [orderAlfabetic, setOrderAlfabetic] = useState("");
+  const [orderDate, setOrderDate] = useState("");
 
   useEffect(() => {
     const fetchTeams = async () => {
@@ -27,7 +29,6 @@ const Filters = () => {
     const selectedTeam = event.target.value;
     setSelectedTeam(selectedTeam);
     dispatch(FilterTeam(selectedTeam));
-    console.log('filtered drivers ', selectedTeam);
   };
 
   const handleSourceChange = (event) => {
@@ -36,24 +37,56 @@ const Filters = () => {
     dispatch(FilterPlatform(selectedSource));
   };
 
-  return (
-    <div>
-      <label>Equipo:</label>
-      <select value={selectedTeam} onChange={handleTeamChange}>
-        <option value="all">Todos los Equipos</option>
-        {teams.map((equipo, index) => (
-          <option key={index} value={equipo.name}>
-            {equipo.name}
-          </option>
-        ))}
-      </select>
+  const handleAlfabetic = (event) => {
+    const selectedOrder = event.target.value;
+    setOrderAlfabetic(selectedOrder)
+    dispatch(orderByName(selectedOrder))
+  }
 
-      <label>Fuente:</label>
-      <select value={selectedSource} onChange={handleSourceChange}>
-        <option value="all">Todas las Fuentes</option>
-        <option value="api">API</option>
-        <option value="db">Base de Datos</option>
-      </select>
+  const handleDate = (event) => {
+    const selectedOrder = event.target.value;
+    setOrderDate(selectedOrder);
+    dispatch(orderByDate(selectedOrder))
+  }
+
+  return (
+    <div className="filters-container">
+      <div className="filter-item">
+        <label>Team:</label>
+        <select value={selectedTeam} onChange={handleTeamChange}>
+          <option value="all">All teams</option>
+          {teams.map((equipo, index) => (
+            <option key={index} value={equipo.name}>
+              {equipo.name}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="filter-item">
+        <label>Source:</label>
+        <select value={selectedSource} onChange={handleSourceChange}>
+          <option value="all">All source</option>
+          <option value="api">API</option>
+          <option value="db">Database</option>
+        </select>
+      </div>
+
+      <div className="filter-item">
+        <label>Order by age:</label>
+        <select value={orderDate} onChange={handleDate}>
+          <option value="des">Lowest to highest</option>
+          <option value="asc">Highest to lowest</option>
+        </select>
+      </div>
+
+      <div className="filter-item">
+        <label>Order by name:</label>
+        <select value={orderAlfabetic} onChange={handleAlfabetic}>
+          <option value="asc">Upward</option>
+          <option value="des">Falling</option>
+        </select>
+      </div>
     </div>
   );
 };

@@ -13,20 +13,20 @@ import "./HomePage.css";
 const HomePage = () => {
   const drivers = useSelector((state) => state.drivers);
   const dispatch = useDispatch();
-  const [viewDrivers, setViewDrivers] = useState([]);
+  // const [viewDrivers, setViewDrivers] = useState([]);
 
-  const onSearch = async (index) => {
-    try {
-      const { data } = await axios(`http://localhost:3001/drivers/name?name=${index}`);
-      if (data.length > 0) {
-        setViewDrivers(data);
-      } else {
-        window.alert('No se encontraron conductores con ese nombre.');
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const onSearch = async (index) => {
+  //   try {
+  //     const { data } = await axios(`http://localhost:3001/drivers/name?name=${index}`);
+  //     if (data.length > 0) {
+  //       setViewDrivers(data);
+  //     } else {
+  //       window.alert('No se encontraron conductores con ese nombre.');
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   // const fetchAllDrivers = async () => {
   //   try {
@@ -45,18 +45,13 @@ const HomePage = () => {
     dispatch(getAllDrivers());
   }, [dispatch]);
 
-
-  useEffect(() => {
-    console.log(drivers);
-  }, [drivers]);
-
   return (
     <div className="home-container">
       <NavBar />
-      <SearchBar onSearch={onSearch} />
+      <SearchBar />
       <div className="filters-and-list">
         <Filters />
-        <DriverList drivers={viewDrivers.length > 0 ? viewDrivers : drivers} />
+        <DriverList drivers={drivers} />
       </div>
     </div>
   );

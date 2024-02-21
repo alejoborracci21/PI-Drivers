@@ -1,12 +1,13 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { search } from "../../redux/actions";
 import './searchBar.css'
 
 
 const SearchBar = ({onSearch}) => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
-    
+    const dispatch = useDispatch()
     
     const handleClick = () => {
         if (searchTerm.trim() !== '') {
@@ -20,8 +21,9 @@ const SearchBar = ({onSearch}) => {
     const handleChange = (event) => {
         const {value} = event.target;
         setSearchTerm(value)
-        setErrorMessage('')
+        dispatch(search(value))
     }
+
     return(
         <div>
             <h1>Search driver by name:</h1>
