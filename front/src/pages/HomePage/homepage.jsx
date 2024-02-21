@@ -14,7 +14,6 @@ const HomePage = () => {
   const drivers = useSelector((state) => state.drivers);
   const dispatch = useDispatch();
   const [viewDrivers, setViewDrivers] = useState([]);
-  const [viewAllDrivers, setViewAllDrivers] = useState([]);
 
   const onSearch = async (index) => {
     try {
@@ -29,27 +28,27 @@ const HomePage = () => {
     }
   };
 
-  const fetchAllDrivers = async () => {
-    try {
-      const { data } = await axios('http://localhost:3001/drivers');
-      setViewAllDrivers(data);
-    } catch (error) {
-      console.log('Error al obtener todos los conductores:', error);
-    }
-  };
+  // const fetchAllDrivers = async () => {
+  //   try {
+  //     const { data } = await axios('http://localhost:3001/drivers');
+  //     setViewAllDrivers(data);
+  //   } catch (error) {
+  //     console.log('Error al obtener todos los conductores:', error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchAllDrivers();
-  }, []);
+  // useEffect(() => {
+  //   fetchAllDrivers();
+  // }, []);
 
   useEffect(() => {
     dispatch(getAllDrivers());
   }, [dispatch]);
 
 
-  // useEffect(() => {
-  //   console.log(drivers);
-  // }, [drivers]);
+  useEffect(() => {
+    console.log(drivers);
+  }, [drivers]);
 
   return (
     <div className="home-container">

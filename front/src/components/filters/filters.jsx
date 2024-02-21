@@ -27,6 +27,7 @@ const Filters = () => {
     const selectedTeam = event.target.value;
     setSelectedTeam(selectedTeam);
     dispatch(FilterTeam(selectedTeam));
+    console.log('filtered drivers ', selectedTeam);
   };
 
   const handleSourceChange = (event) => {
@@ -41,7 +42,7 @@ const Filters = () => {
       <select value={selectedTeam} onChange={handleTeamChange}>
         <option value="all">Todos los Equipos</option>
         {teams.map((equipo, index) => (
-          <option key={index} value={equipo}>
+          <option key={index} value={equipo.name}>
             {equipo.name}
           </option>
         ))}

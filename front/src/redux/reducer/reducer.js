@@ -17,21 +17,24 @@ export default function rootReducer (state = initialstate, {type, payload}) {
             };
         
             case FILTER_TEAM:
-                const teamToFilter = payload.toLowerCase();
-                const filteredDrivers = state.alldrivers.filter((driver) => {
-                  if (driver.teams && typeof driver.teams === 'string') {
-                    // Dividir la cadena de equipos por comas y eliminar espacios en blanco
-                    const driverTeams = driver.teams.split(',').map(team => team.trim().toLowerCase());
-                    // Verificar si el equipo a filtrar está presente en los equipos del conductor
-                    return driverTeams.includes(teamToFilter);
-                  }
-                  return false; // Si driver.teams no es una cadena, no incluirlo en el filtro
-                });
-                return {
-                  ...state,
-                  drivers: filteredDrivers
-                };
-                break;
+                if(payload == 'all'){
+                    return{
+                        ...state,
+                        drivers: state.alldrivers
+                    }
+                }
+  const teamToFilter = payload.toLowerCase();
+  const filteredDrivers = state.alldrivers.filter((driver) => {
+    if (driver.teams && typeof driver.teams === "string") {
+      const driverTeams = driver.teams.split(",").map((team) => team.trim().toLowerCase());
+      return driverTeams.includes(teamToFilter);
+    }
+    return false;
+  });
+  return {
+    ...state,
+    drivers: filteredDrivers,
+  };
 
         case FILTER_PLATFORM:
                 {
