@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import axios from 'axios';
 import { FilterTeam, FilterPlatform, orderByDate, orderByName } from "../../redux/actions";
 import './filters.css'
-import { FILTER_TEAM } from "../../redux/actions/types";
 
 const Filters = () => {
   const dispatch = useDispatch()
@@ -43,7 +42,7 @@ const Filters = () => {
         <option value="all">Todos los Equipos</option>
         {teams.map((equipo, index) => (
           <option key={index} value={equipo}>
-            {equipo}
+            {equipo.name}
           </option>
         ))}
       </select>

@@ -5,7 +5,6 @@ import './DriverCard.css';
 
 const DriverCard = ({ surname, forename, image, teams, id }) => {
     const imageDefault = image && image.url ? image.url : "https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg";
-
     return (
         <div className="card-div">
             <Link to={`/detail/${id}`}>
