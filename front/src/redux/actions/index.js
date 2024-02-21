@@ -3,7 +3,7 @@ import { FILTER_TEAM, FILTER_PLATFORM , ORDER_DATE, ORDER_NAME, SET_DRIVERS } fr
 
 export const getAllDrivers = () => async (dispatch) => {
     try {
-      const { data } = await axios('http://localhost:3001/drivers');
+      const { data } = await axios.get('http://localhost:3001/drivers');
       // Despachar la acción SET_DRIVERS después de obtener los datos
       dispatch({
         type: SET_DRIVERS,

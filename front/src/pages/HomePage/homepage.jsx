@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./HomePage.css";
 
 const HomePage = () => {
-  // const {drivers} = useSelector((state) => state);
+  const drivers = useSelector((state) => state.drivers);
   const dispatch = useDispatch();
   const [viewDrivers, setViewDrivers] = useState([]);
   const [viewAllDrivers, setViewAllDrivers] = useState([]);
@@ -46,6 +46,7 @@ const HomePage = () => {
     dispatch(getAllDrivers());
   }, [dispatch]);
 
+
   // useEffect(() => {
   //   console.log(drivers);
   // }, [drivers]);
@@ -56,7 +57,7 @@ const HomePage = () => {
       <SearchBar onSearch={onSearch} />
       <div className="filters-and-list">
         <Filters />
-        <DriverList drivers={viewDrivers.length > 0 ? viewDrivers : viewAllDrivers} />
+        <DriverList drivers={viewDrivers.length > 0 ? viewDrivers : drivers} />
       </div>
     </div>
   );

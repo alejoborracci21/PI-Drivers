@@ -6,12 +6,13 @@ const initialstate = {
 }
 
 
-export default function reducer (state = initialstate, {type, payload}) {
+export default function rootReducer (state = initialstate, {type, payload}) {
     switch (type) {
 
         case SET_DRIVERS:
             return {
                 ...state,
+                drivers: payload,
                 alldrivers: payload
             };
         
@@ -50,6 +51,7 @@ export default function reducer (state = initialstate, {type, payload}) {
                 }
             break;
         default:
+            return state;
             break;
     }
 }
