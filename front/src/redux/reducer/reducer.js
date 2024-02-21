@@ -38,7 +38,11 @@ export default function rootReducer (state = initialstate, {type, payload}) {
 
         case FILTER_PLATFORM:
                 {
-                    console.log(`type ${payload}`)
+                    if(payload.toLowerCase() == 'api'){
+                        console.log('es de la api')
+                    }else if(payload.toLowerCase() == 'db'){
+                        console.log('db')
+                    }
                 }
             break;
 

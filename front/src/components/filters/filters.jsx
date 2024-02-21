@@ -52,7 +52,7 @@ const Filters = () => {
       <select value={selectedSource} onChange={handleSourceChange}>
         <option value="all">Todas las Fuentes</option>
         <option value="api">API</option>
-        <option value="database">Base de Datos</option>
+        <option value="db">Base de Datos</option>
       </select>
     </div>
   );
