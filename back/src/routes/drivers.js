@@ -78,7 +78,7 @@ router.get('/:id', async(req, res) => {
 
 //! post drivers
 router.post('/', async(req, res) => {
-    const {name, description, image, nation, teams, date} = req.body;
+    const {name, description, image, nation, teams, dob} = req.body;
 
     
     try {
@@ -88,10 +88,9 @@ router.post('/', async(req, res) => {
         image: image,
         teams: teams,
         nation: nation,
-        date: date,
+        dob: dob,
     })
-    console.log(newdriver)
-    res.send(`Nuevo driver creado: ${newdriver}`)
+    res.send(`Nuevo driver creado: ${newdriver.name.forename}`)
     } catch (error) {
         res.send(error)
     }

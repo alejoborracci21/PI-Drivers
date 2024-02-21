@@ -36,7 +36,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    date: {
+    dob: {
       type: DataTypes.STRING,
       allowNull: false,
     },
