@@ -1,5 +1,4 @@
 // teamsController.js
-
 const { Team } = require('../db');
 
 const addTeamsToDatabase = async (teams) => {

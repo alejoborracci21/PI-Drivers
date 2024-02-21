@@ -4,22 +4,15 @@ const { Router } = require('express');
 const axios = require('axios');
 const { addTeamsToDatabase } = require('../controllers/teamsController');
 const api = require('../../api/db.json');
+const { Team } = require('../db');
 const { drivers } = api;
 const route = Router();
 
 route.get('/', async (req, res) => {
+  //tiene que devolver los teams de la tabla teams
+  const teamsdb = await Team.findAll()
   try {
-    const allTeams = [];
-
-    drivers.forEach((driver) => {
-      const driverTeams = driver.teams ? driver.teams.split(",") : [];
-      allTeams.push(...driverTeams.map((team) => team.trim()));
-    });
-
-    //? Funcion para agregar los teams a la db
-    const teamsAdded = await addTeamsToDatabase(allTeams); 
-
-    res.send(allTeams);
+    res.send(teamsdb)
   } catch (error) {
     console.error('Error en la ruta principal:', error);
     res.status(500).send({ error: 'Error interno del servidor', details: error.message });
