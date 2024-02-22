@@ -1,0 +1,53 @@
+/* styles.css */
+.div-form{
+    background-color: rgba(48, 48, 48, 0.849);
+}
+form {
+    max-width: 600px;
+    background-color: #863131;
+    margin: 0 auto;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin-top: 50px;
+    border: solid black;
+    border-radius: 5px;
+    box-shadow: 10px 5px 5px rgba(27, 27, 27, 0.808);
+  }
+  
+  label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  select[multiple] {
+    height: 100px; /* Ajusta la altura según tus necesidades */
+  }
+  
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  

@@ -29,7 +29,7 @@ export default function rootReducer(state = initialstate, { type, payload }) {
         };
       }
       const teamToFilter = payload.toLowerCase();
-      const filteredDrivers = state.alldrivers.filter((driver) => {
+      const filteredDrivers = state.drivers.filter((driver) => {
         if (driver.teams && typeof driver.teams === "string") {
           const driverTeams = driver.teams
             .split(",")
@@ -46,7 +46,7 @@ export default function rootReducer(state = initialstate, { type, payload }) {
     case FILTER_PLATFORM:
       {
         if (payload.toLowerCase() == "api") {
-          const filtered = state.alldrivers.filter((driver) => {
+          const filtered = state.drivers.filter((driver) => {
             if (typeof driver.id == "number") {
               return driver;
             }
@@ -100,11 +100,24 @@ export default function rootReducer(state = initialstate, { type, payload }) {
       }
       break;
 
-    case ORDER_NAME:
-      {
-        console.log("type order name");
+      case ORDER_NAME: {
+        // Crear una copia del estado para evitar mutar el estado directamente
+        const sortedDrivers = state.drivers.slice(); 
+        
+        //localeCompare compara las cadenas de texto y devuelve un booleano
+        if (payload === "asc") {
+          //si el nombre de a es true comparado con el nombre de b (ordea a y luego b)
+          sortedDrivers.sort((a, b) => a.name.forename.localeCompare(b.name.forename));
+        } else if (payload === "des") {
+          //si el nombre de b es true comparado con el nombre de a (ordena b y luego a)
+          sortedDrivers.sort((a, b) => b.name.forename.localeCompare(a.name.forename));
+        }
+      
+        return {
+          ...state,
+          drivers: sortedDrivers,
+        };
       }
-      break;
     case SEARCH: {
       const filtered = state.alldrivers.filter((driver) => {
         const name = driver.name.forename;

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import NavBar from "../../components/navbar/navBar";
+import NavBar from "../../components/navbar/navbar";
 import SearchBar from "../../components/searchbar/searchBar";
 import DriverList from "../../components/driverlist/driverlist";
 import Filters from "../../components/filters/filters";
