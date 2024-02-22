@@ -40,10 +40,8 @@ const FormPage = () => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Aquí puedes realizar cualquier validación necesaria antes de enviar los datos
 
     const newDriver = {
       name: {
@@ -60,6 +58,11 @@ const FormPage = () => {
 
     // Aquí puedes hacer algo con el nuevo driver (por ejemplo, mostrarlo en la consola)
     console.log(newDriver);
+    try {
+      return await axios.post('http://localhost:3001/drivers', newDriver)
+    } catch (error) {
+      
+    }
   };
 
   const handleReset = () => {
@@ -69,18 +72,20 @@ const FormPage = () => {
   return (
     <div className="div-form">
       <NavBar />
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="firstName">Name:</label>
+      <form className="create-form" onSubmit={handleSubmit}>
+        <label className="create-label" htmlFor="firstName">Name:</label>
         <input
           type="text"
           id="firstName"
           value={forename}
           onChange={(e) => setFirstName(e.target.value)}
           required
+          className="create-input"
         />
 
-        <label htmlFor="lastName">Lastname:</label>
+        <label className="create-label" htmlFor="lastName">Lastname:</label>
         <input
+        className="create-input"
           type="text"
           id="lastName"
           value={surname}
@@ -88,8 +93,9 @@ const FormPage = () => {
           required
         />
 
-        <label htmlFor="nationality">Nation:</label>
+        <label className="create-label" htmlFor="nationality">Nation:</label>
         <input
+        className="create-input"
           type="text"
           id="nationality"
           value={nation}
@@ -97,8 +103,9 @@ const FormPage = () => {
           required
         />
 
-        <label htmlFor="imageURL">Image:</label>
+        <label className="create-label" htmlFor="imageURL">Image:</label>
         <input
+        className="create-input"
           type="text"
           id="imageURL"
           value={image}
@@ -106,8 +113,9 @@ const FormPage = () => {
           required
         />
 
-        <label htmlFor="birthdate">Date of birthdate:</label>
+        <label className="create-label" htmlFor="birthdate">Date of birthdate:</label>
         <input
+        className="create-input"
           type="date"
           id="birthdate"
           value={dob}
@@ -115,8 +123,9 @@ const FormPage = () => {
           required
         />
 
-        <label htmlFor="description">Description:</label>
+        <label className="create-label" htmlFor="description">Description:</label>
         <textarea
+        className="create-input"
           id="description"
           rows="4"
           value={description}
@@ -124,17 +133,17 @@ const FormPage = () => {
           required
         ></textarea>
 
-        <label htmlFor="teams">Teams:</label>
+        <label className="create-label" htmlFor="teams">Teams:</label>
         <p>{teams}</p>
-        <select id="teams" multiple>
+        <select className="create-select" id="teams" multiple>
           {allTeams.map((team) => (
             <option key={team.id} value={team.name} onClick={handleTeamChange}>
               {team.name}
             </option>
           ))}
         </select>
-        <button type="button"onClick={handleReset}>Reset teams</button>
-        <button type="submit">Create driver</button>
+        <button className="create-button" type="button"onClick={handleReset}>Reset teams</button>
+        <button className="create-button" type="submit">Create driver</button>
       </form>
     </div>
   );

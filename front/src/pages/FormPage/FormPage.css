@@ -2,7 +2,7 @@
 .div-form{
     background-color: rgba(48, 48, 48, 0.849);
 }
-form {
+.create-form {
     max-width: 600px;
     background-color: #863131;
     margin: 0 auto;
@@ -15,15 +15,15 @@ form {
     box-shadow: 10px 5px 5px rgba(27, 27, 27, 0.808);
   }
   
-  label {
+  .create-label {
     display: block;
     margin-top: 10px;
     font-weight: bold;
   }
   
-  input,
-  select,
-  textarea {
+  .create-input,
+  .create-select,
+  .create-textarea {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
@@ -33,11 +33,11 @@ form {
     border-radius: 4px;
   }
   
-  select[multiple] {
+  .create-select[multiple] {
     height: 100px; /* Ajusta la altura según tus necesidades */
   }
   
-  button {
+  .create-button {
     background-color: #4caf50;
     color: white;
     padding: 10px 15px;
@@ -47,7 +47,7 @@ form {
     margin-right: 10px;
   }
   
-  button:hover {
+  .create-button:hover {
     background-color: #45a049;
   }
   
