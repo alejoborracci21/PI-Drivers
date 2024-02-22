@@ -5,6 +5,14 @@
   justify-content: space-between; /* Para distribuir los labels horizontalmente */
   margin-bottom: 20px;
   margin-top: 20px;
+  border-bottom:  solid rgba(56, 56, 56, 0.918);
+  border-top: solid rgba(56, 56, 56, 0.918);
+  border-width: 1px;
+}
+
+.filter-item{
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 label {

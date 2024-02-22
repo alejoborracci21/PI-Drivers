@@ -29,7 +29,7 @@ export default function rootReducer(state = initialstate, { type, payload }) {
         };
       }
       const teamToFilter = payload.toLowerCase();
-      const filteredDrivers = state.drivers.filter((driver) => {
+      const filteredDrivers = state.alldrivers.filter((driver) => {
         if (driver.teams && typeof driver.teams === "string") {
           const driverTeams = driver.teams
             .split(",")

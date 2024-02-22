@@ -13,33 +13,6 @@ import "./HomePage.css";
 const HomePage = () => {
   const drivers = useSelector((state) => state.drivers);
   const dispatch = useDispatch();
-  // const [viewDrivers, setViewDrivers] = useState([]);
-
-  // const onSearch = async (index) => {
-  //   try {
-  //     const { data } = await axios(`http://localhost:3001/drivers/name?name=${index}`);
-  //     if (data.length > 0) {
-  //       setViewDrivers(data);
-  //     } else {
-  //       window.alert('No se encontraron conductores con ese nombre.');
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // const fetchAllDrivers = async () => {
-  //   try {
-  //     const { data } = await axios('http://localhost:3001/drivers');
-  //     setViewAllDrivers(data);
-  //   } catch (error) {
-  //     console.log('Error al obtener todos los conductores:', error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchAllDrivers();
-  // }, []);
 
   useEffect(() => {
     dispatch(getAllDrivers());

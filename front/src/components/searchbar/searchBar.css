@@ -1,23 +1,12 @@
-/* styles.css (o el nombre que prefieras) */
-
-/* Estilos para el contenedor principal del componente */
-.search-bar-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Añadido: centra verticalmente el contenido */
-    margin-bottom: 20px;
-    text-align: center; /* Añadido: centra horizontalmente el contenido */
+  body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
-  
-  /* Estilos para el título "Search driver by name:" */
   h1 {
     font-size: 18px;
     margin-bottom: 10px;
-    margin-top: 40px;
+    margin-top: 60px;
   }
   
-  /* Estilos para el input de búsqueda */
   .search-input {
     padding: 8px;
     font-size: 16px;
@@ -27,11 +16,10 @@
     width: 250px;
   }
   
-  /* Estilos para el botón de búsqueda */
   .search-button {
     padding: 8px 16px;
     font-size: 16px;
-    background-color: #4CAF50; /* Color de fondo verde (puedes ajustar según tu paleta de colores) */
+    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
@@ -40,12 +28,10 @@
     transition: background-color 0.3s;
   }
   
-  /* Cambia el color del botón al pasar el ratón sobre él */
   .search-button:hover {
     background-color: #45a049;
   }
   
-  /* Estilos para el mensaje de error */
   .error-message {
     color: red;
     font-size: 14px;

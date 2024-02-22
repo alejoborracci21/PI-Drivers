@@ -6,8 +6,7 @@
   border-radius: 8px;
   overflow: hidden;
   transition: box-shadow 0.3s ease;
-  margin: 10px;
-  width: 300px;
+  width: 250px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -16,7 +15,7 @@
 
 .card-div img {
   width: 100%;
-  height: 400px; /* Ajusta según tus necesidades */
+  height: 300px;
   object-fit: cover;
   border-radius: 8px 8px 0 0;
 }
@@ -25,7 +24,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 15px;
+  padding: 10px;
   width: 100%;
   box-sizing: border-box;
   height: 100%; /* Añadido para ocupar todo el espacio vertical disponible */
@@ -33,10 +32,12 @@
 
 .card-details h2 {
   margin: 0;
+  margin-bottom: 5px;
   color: #ffffff; /* Cambiado a blanco para mejorar la visibilidad */
   position: relative;
   z-index: 1; /* Añadido: Asegura que el texto esté sobre la imagen */
   text-decoration: underline; /* Añadido: Subrayar solo el nombre */
+  
 }
 
 .card-details h3,
@@ -46,4 +47,5 @@
   position: relative;
   z-index: 1; /* Añadido: Asegura que el texto esté sobre la imagen */
   text-decoration: none; /* Añadido: Evitar subrayado en equipos y otros elementos */
+  font-size: small
 }

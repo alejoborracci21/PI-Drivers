@@ -75,8 +75,8 @@ const Filters = () => {
       <div className="filter-item">
         <label>Order by age:</label>
         <select value={orderDate} onChange={handleDate}>
-          <option value="des">Lowest to highest</option>
-          <option value="asc">Highest to lowest</option>
+          <option value="des">Highest to lowest</option>
+          <option value="asc">Lowest to highest</option>
         </select>
       </div>
 

@@ -1,5 +1,8 @@
 /* LandingPage.css */
 
+body{
+  margin: 0;
+}
 
 .landing-page {
   position: relative;
