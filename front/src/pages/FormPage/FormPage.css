@@ -1,18 +1,30 @@
 /* styles.css */
 .div-form{
-    background-color: rgba(48, 48, 48, 0.849);
+    background-image: url("/backgroundform.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 50px;
+    display: flex;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    box-shadow: inset 0px 8px 6px -6px #888
 }
+.create-form h2{
+  text-align: center;
+  text-decoration: underline 2px #ffffff;
+}
+
 .create-form {
     max-width: 600px;
-    background-color: #863131;
+    background-color: #af1e1e;
     margin: 0 auto;
     padding-right: 20px;
     padding-left: 20px;
     padding-bottom: 20px;
     margin-top: 50px;
     border: solid black;
-    border-radius: 5px;
-    box-shadow: 10px 5px 5px rgba(27, 27, 27, 0.808);
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.808);
+    margin-bottom: 50px;
   }
   
   .create-label {

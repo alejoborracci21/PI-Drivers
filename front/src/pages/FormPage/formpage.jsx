@@ -56,13 +56,22 @@ const FormPage = () => {
     };
     // Envía el objeto del nuevo driver a tu lógica de aplicación (por ejemplo, mediante una acción de Redux o una solicitud AJAX)
 
-    // Aquí puedes hacer algo con el nuevo driver (por ejemplo, mostrarlo en la consola)
-    console.log(newDriver);
-    try {
+    if(newDriver){
+      try {
+      window.alert(`New Driver added: ${newDriver.name.forename}`)
+      setFirstName("")
+      setBirthdate("")
+      setDescription("")
+      setImageURL("")
+      setNationality("")
+      setSelectedTeams("")
+      setLastName("")
       return await axios.post('http://localhost:3001/drivers', newDriver)
     } catch (error) {
-      
+      window.alert(error)
     }
+    }
+    
   };
 
   const handleReset = () => {
@@ -73,6 +82,7 @@ const FormPage = () => {
     <div className="div-form">
       <NavBar />
       <form className="create-form" onSubmit={handleSubmit}>
+        <h2>Create New Driver</h2>
         <label className="create-label" htmlFor="firstName">Name:</label>
         <input
           type="text"
@@ -110,7 +120,6 @@ const FormPage = () => {
           id="imageURL"
           value={image}
           onChange={(e) => setImageURL(e.target.value)}
-          required
         />
 
         <label className="create-label" htmlFor="birthdate">Date of birthdate:</label>

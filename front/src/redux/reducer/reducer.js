@@ -46,7 +46,7 @@ export default function rootReducer(state = initialstate, { type, payload }) {
     case FILTER_PLATFORM:
       {
         if (payload.toLowerCase() == "api") {
-          const filtered = state.drivers.filter((driver) => {
+          const filtered = state.alldrivers.filter((driver) => {
             if (typeof driver.id == "number") {
               return driver;
             }

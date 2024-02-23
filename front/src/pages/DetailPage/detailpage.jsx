@@ -4,17 +4,17 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import NavBar from "../../components/navbar/navBar";
+import NavBar from "../../components/navbar/navbar";
 import "./DetailPage.css"; // Importa el archivo de estilos
 
 const DetailPage = () => {
   const { id } = useParams();
-  const [driver, setDriver] = useState(null);
+  const [driver, setDriver] = useState({});
 
   const getDriverById = async () => {
     try {
       const { data } = await axios(`http://localhost:3001/drivers/${id}`);
-      console.log(data);
+      console.log(data)
       const { image, name, dob, teams, nationality, description, driverRef } =
         data;
       const formattedDriver = {
@@ -27,6 +27,7 @@ const DetailPage = () => {
         description: description,
         driverRef: driverRef,
       };
+      console.log(formattedDriver)
       setDriver(formattedDriver);
     } catch (error) {
       console.error("Error al obtener detalles del conductor:", error);
@@ -37,13 +38,11 @@ const DetailPage = () => {
     getDriverById();
   }, [id]);
 
-  if (!driver) {
-    return <div>Cargando...</div>;
-  }
+ 
 
   return (
     <div>
-      <NavBar></NavBar>
+      <NavBar/>
       <div className="driver-details">
         <img
           src={
@@ -52,13 +51,18 @@ const DetailPage = () => {
               : "https://www.formula1.com/etc/designs/fom-website/social/f1-default-share.jpg"
           }
           alt={`Not found`}
+          className="image-detail"
         />
+        <div className="data">
         <h1>{`${driver.name} ${driver.surname}`}</h1>
         <p>Fecha de Nacimiento: {driver.dob}</p>
         <p>Equipos: {driver.teams}</p>
         <p>Nacionalidad: {driver.nationality}</p>
         <p>Descripción: {driver.description}</p>
         <p>Apodo: {driver.driverRef ? driver.driverRef : "Ninguno"}</p>
+        </div>
+       
+        
       </div>
     </div>
   );

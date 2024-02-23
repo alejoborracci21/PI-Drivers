@@ -1,26 +1,30 @@
 /* DetailPage.css */
-body{
+body {
     background-color: black;
 }
+
 .driver-details {
-    text-align: center;
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
     padding: 20px;
     margin-top: 50px;
 }
-
-.driver-details img {
+.data{
+    float: right;
+    margin-right: 200px;
+}
+.image-detail {
     max-width: 40%;
     max-height: 500px;
     border-radius: 8px;
     margin-bottom: 10px;
     margin-right: 20px;
-    float: left;
 }
 
 .driver-details h1 {
     font-size: 24px;
     margin-bottom: 40px;
-    
 }
 
 .driver-details p {
