@@ -1,4 +1,7 @@
 /* Agrega estos estilos a tu archivo CSS para la AboutPage */
+body{
+  background-color: black;
+}
 .about-div {
     display: flex;
     justify-content: space-between;

@@ -1,5 +1,4 @@
 // DetailPage.jsx
-
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -14,7 +13,6 @@ const DetailPage = () => {
   const getDriverById = async () => {
     try {
       const { data } = await axios(`http://localhost:3001/drivers/${id}`);
-      console.log(data)
       const { image, name, dob, teams, nationality, description, driverRef } =
         data;
       const formattedDriver = {
@@ -27,7 +25,6 @@ const DetailPage = () => {
         description: description,
         driverRef: driverRef,
       };
-      console.log(formattedDriver)
       setDriver(formattedDriver);
     } catch (error) {
       console.error("Error al obtener detalles del conductor:", error);
@@ -44,6 +41,9 @@ const DetailPage = () => {
     <div>
       <NavBar/>
       <div className="driver-details">
+        <div className="background">
+        <img src="/f1-detail.jpg"></img>
+        </div>
         <img
           src={
             driver.image
