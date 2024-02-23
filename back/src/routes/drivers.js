@@ -104,7 +104,7 @@ router.post("/", async (req, res) => {
       description: description,
       image: image,
       teams: teams,
-      nation: nation,
+      nationality: nation,
       dob: dob,
     });
     res.send(`Nuevo driver creado: ${newdriver.name.forename}`);
