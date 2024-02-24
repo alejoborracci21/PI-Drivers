@@ -48,7 +48,7 @@ module.exports = (sequelize) => {
     hooks: {
       beforeValidate: (driver, options) => {
         if (!driver.image) {
-          driver.image = 'https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg';
+          driver.image = 'https://i.pinimg.com/736x/52/d5/59/52d5598a7c1b5ee04954924c6be828b2.jpg';
         }
       },
     },
