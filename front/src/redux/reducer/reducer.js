@@ -29,7 +29,7 @@ export default function rootReducer(state = initialstate, { type, payload }) {
         };
       }
       const teamToFilter = payload.toLowerCase();
-      const filteredDrivers = state.alldrivers.filter((driver) => {
+      const filteredDrivers = state.drivers.filter((driver) => {
         if (driver.teams && typeof driver.teams === "string") {
           const driverTeams = driver.teams
             .split(",")
@@ -46,7 +46,7 @@ export default function rootReducer(state = initialstate, { type, payload }) {
     case FILTER_PLATFORM:
       {
         if (payload.toLowerCase() == "api") {
-          const filtered = state.alldrivers.filter((driver) => {
+          const filtered = state.drivers.filter((driver) => {
             if (typeof driver.id == "number") {
               return driver;
             }
@@ -57,7 +57,7 @@ export default function rootReducer(state = initialstate, { type, payload }) {
             drivers: filtered,
           };
         } else if (payload.toLowerCase() == "db") {
-          const filtered = state.alldrivers.filter((driver) => {
+          const filtered = state.drivers.filter((driver) => {
             if (typeof driver.id == "string") {
               return driver;
             }
@@ -77,7 +77,7 @@ export default function rootReducer(state = initialstate, { type, payload }) {
       break;
 
       case ORDER_DATE: {
-        const sortedDrivers = state.alldrivers.slice(); // Crear una copia de la matriz para evitar mutar el estado directamente
+        const sortedDrivers = state.drivers.slice(); // Crear una copia de la matriz para evitar mutar el estado directamente
       
         if (payload === "asc") {
           sortedDrivers.sort((a, b) => {
@@ -119,7 +119,7 @@ export default function rootReducer(state = initialstate, { type, payload }) {
         };
       }
     case SEARCH: {
-      const filtered = state.alldrivers.filter((driver) => {
+      const filtered = state.drivers.filter((driver) => {
         const name = driver.name.forename;
         const subname = driver.name.surname;
         if (

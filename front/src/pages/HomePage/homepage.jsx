@@ -1,7 +1,7 @@
 // HomePage.jsx
 
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 import NavBar from "../../components/navbar/navbar";
 import SearchBar from "../../components/searchbar/searchBar";
 import DriverList from "../../components/driverlist/driverList";
@@ -12,6 +12,7 @@ import "./HomePage.css";
 
 const HomePage = () => {
   const drivers = useSelector((state) => state.drivers);
+  const alldrivers = useSelector((state) => state.alldrivers);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,7 +25,7 @@ const HomePage = () => {
       <SearchBar />
       <div className="filters-and-list">
         <Filters />
-        <DriverList drivers={drivers} />
+        <DriverList drivers={drivers.length ? drivers : alldrivers} />
       </div>
     </div>
   );
