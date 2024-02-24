@@ -22,6 +22,9 @@ const HomePage = () => {
   return (
     <div className="home-container">
       <NavBar />
+      <img src="/background-homepage.jpg" className="background"/>
+
+      
       <SearchBar />
       <div className="filters-and-list">
         <Filters />

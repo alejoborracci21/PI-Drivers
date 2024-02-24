@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import './DriverCard.css';
 
 const DriverCard = ({ surname, forename, image, teams, id }) => {
-    const imageDefault = image && image.url ? image.url : "https://www.shutterstock.com/image-vector/blank-avatar-photo-place-holder-600nw-1095249842.jpg";
+    const imageDefault = image && image.url ? image.url : "https://w.forfun.com/fetch/bf/bfe0e03d92c8f8a7e503163d22b8c0a6.jpeg";
     return (
         <div className="card-div">
             <Link to={`/detail/${id}`}>

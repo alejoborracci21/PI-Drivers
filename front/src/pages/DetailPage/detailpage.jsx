@@ -17,6 +17,7 @@ const DetailPage = () => {
         data;
       const formattedDriver = {
         name: name.forename,
+        id: id,
         surname: name.surname,
         image: image.url,
         dob: dob,
@@ -55,6 +56,7 @@ const DetailPage = () => {
         />
         <div className="data">
         <h1>{`${driver.name} ${driver.surname}`}</h1>
+        <p>ID: {id}</p>
         <p>Fecha de Nacimiento: {driver.dob}</p>
         <p>Equipos: {driver.teams}</p>
         <p>Nacionalidad: {driver.nationality}</p>

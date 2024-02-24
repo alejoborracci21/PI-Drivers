@@ -11,7 +11,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Asegura que esté detrás del contenido */
+    z-index: -1; 
 }
 
 .background img {
@@ -19,14 +19,14 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    opacity: 0.5; /* Ajusta la opacidad según tus preferencias */
+    opacity: 0.5;
 }
 
 .driver-details {
     display: flex;
     padding: 20px;
     margin-top: 100px;
-    position: relative; /* Asegura que el contenido esté sobre el fondo */
+    position: relative;
     color: white !important;
 }
 
