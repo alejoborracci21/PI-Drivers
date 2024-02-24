@@ -102,11 +102,14 @@ router.post("/", async (req, res) => {
     const newdriver = await Driver.create({
       name: name,
       description: description,
-      image: image,
+      image: {
+        url: image,
+      },
       teams: teams,
       nationality: nation,
       dob: dob,
     });
+    
     res.send(`Nuevo driver creado: ${newdriver.name.forename}`);
   } catch (error) {
     res.send(error);
