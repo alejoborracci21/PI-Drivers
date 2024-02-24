@@ -7,9 +7,15 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+.title{
+  position:absolute;
+  padding: 10px;
+
+}
 
 .card-list {
   margin: 10px;
+  margin-top: 100px;
 }
 
 

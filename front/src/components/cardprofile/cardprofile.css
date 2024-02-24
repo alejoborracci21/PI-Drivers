@@ -10,12 +10,17 @@
 }
 
 .card-header {
-    text-align: center;
-    padding: 50px;
+    text-align:center;
+    font-size: small;
+    padding: 90px;
+    text-wrap: nowrap;
     color: white;
-    background-color: #ff2020;
+    background-image: url("../../../public/Profile.JPG");
+    background-repeat: no-repeat;
+    background-size: cover;
     text-shadow: 0 0 10px black;
 }
+
 
 .profile-image {
     width: 140px;

@@ -23,6 +23,7 @@ const SearchBar = () => {
             value={searchTerm}
             onChange={handleChange}
             className="search-input"
+            placeholder="Name..."
             />
         </div>
     )

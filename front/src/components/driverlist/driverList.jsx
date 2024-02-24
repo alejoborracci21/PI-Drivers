@@ -31,6 +31,7 @@ const DriverList = ({ drivers }) => {
   return (
     <>
       <div className="list-container">
+        <h2 className="title">Drivers F1</h2>
         {currentDrivers.map(({ id, name, image, teams }) => (
           <div key={id} className="card-list">
             <DriverCard
