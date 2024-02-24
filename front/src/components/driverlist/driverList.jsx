@@ -4,16 +4,30 @@ import DriverCard from "../drivercard/driverCard";
 import './driverList.css';
 
 const DriverList = ({ drivers }) => {
+
+
+  //!-----------PAGINATION--------------
+
+  //Defino la cantidad de cards por pagina
   const itemsPerPage = 12;
+
+  //Estado que mantiene el numero de la pagina actual y la funcion que lo modifica
   const [currentPage, setCurrentPage] = useState(1);
 
+  //Manejador del cambio de pagina
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
+  //Dividiendo la cantidad total de drivers por la cantidad de elementos por página y redondeando hacia arriba.
   const totalPages = Math.ceil(drivers.length / itemsPerPage);
-  const maxVisiblePages = 5; // Cambiar según la cantidad deseada de botones visibles
 
+
+  //Cantidad de botones visibles
+  const maxVisiblePages = 5; 
+
+
+  //Función que calcula y devuelve un array con las páginas visibles en función a la página actual, la cantidad máxima de páginas visibles y la cantidad total de páginas.
   const getVisiblePages = () => {
     const halfVisible = Math.floor(maxVisiblePages / 2);
     const startPage = Math.max(currentPage - halfVisible, 1);
@@ -24,9 +38,18 @@ const DriverList = ({ drivers }) => {
 
   const visiblePages = getVisiblePages();
 
+  //Calcula el índice de inicio de los drivers a mostrar en la página actual.
   const startIndex = (currentPage - 1) * itemsPerPage;
+
+  //Calcula el índice de fin de los drivers a mostrar en la página actual.
   const endIndex = startIndex + itemsPerPage;
+
+  // Extrae un subconjunto de drivers a mostrar en la página actual, utilizando los índices de inicio y fin.
   const currentDrivers = drivers.slice(startIndex, endIndex);
+
+  //!--------------------------------
+
+
 
   return (
     <>

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import NavBar from "../../components/navbar/navbar";
 import SearchBar from "../../components/searchbar/searchBar";
-import DriverList from "../../components/driverlist/driverlist";
+import DriverList from "../../components/driverlist/driverList";
 import Filters from "../../components/filters/filters";
 import { getAllDrivers } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
