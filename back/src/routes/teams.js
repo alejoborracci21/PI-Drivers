@@ -9,6 +9,12 @@ const { drivers } = api;
 const route = Router();
 
 route.get('/', async (req, res) => {
+
+  //!Funcion para mapear los teams y agregarlos a la base de datos
+  // const allteams = drivers.map((driver) => driver.teams)
+  // addTeamsToDatabase(allteams);
+
+
   //tiene que devolver los teams de la tabla teams
   const teamsdb = await Team.findAll()
   try {
