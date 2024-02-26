@@ -29,7 +29,7 @@ export default function rootReducer(state = initialstate, { type, payload }) {
         };
       }
       const teamToFilter = payload.toLowerCase();
-      const filteredDrivers = state.drivers.filter((driver) => {
+      const filteredDrivers = state.alldrivers.filter((driver) => {
         if (driver.teams && typeof driver.teams === "string") {
           const driverTeams = driver.teams
             .split(",")
@@ -46,7 +46,7 @@ export default function rootReducer(state = initialstate, { type, payload }) {
     case FILTER_PLATFORM:
       {
         if (payload.toLowerCase() == "api") {
-          const filtered = state.drivers.filter((driver) => {
+          const filtered = state.alldrivers.filter((driver) => {
             if (typeof driver.id == "number") {
               return driver;
             }
@@ -57,7 +57,7 @@ export default function rootReducer(state = initialstate, { type, payload }) {
             drivers: filtered,
           };
         } else if (payload.toLowerCase() == "db") {
-          const filtered = state.drivers.filter((driver) => {
+          const filtered = state.alldrivers.filter((driver) => {
             if (typeof driver.id == "string") {
               return driver;
             }
@@ -81,8 +81,11 @@ export default function rootReducer(state = initialstate, { type, payload }) {
       
         if (payload === "asc") {
           sortedDrivers.sort((a, b) => {
+            //Restamos el año actual menos el año de nacimiento del driver
             const ageA = new Date().getFullYear() - new Date(a.dob).getFullYear();
             const ageB = new Date().getFullYear() - new Date(b.dob).getFullYear();
+
+            //Y ordenamos el menor primero
             return ageA - ageB;
           });
         } else if (payload === "des") {
@@ -129,11 +132,18 @@ export default function rootReducer(state = initialstate, { type, payload }) {
           return driver;
         }
       });
-
-      return {
+      if(filtered){
+        return {
         ...state,
         drivers: filtered,
       };
+      }else{
+        return {
+          ...state,
+          drivers: [],
+        }
+      }
+      
     }
 
     default:

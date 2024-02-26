@@ -14,21 +14,32 @@ const HomePage = () => {
   const drivers = useSelector((state) => state.drivers);
   const alldrivers = useSelector((state) => state.alldrivers);
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(getAllDrivers());
+    dispatch(getAllDrivers())
+      .then(() => setLoading(false))
+      .catch((error) => {
+        console.error("Error fetching drivers:", error);
+        setLoading(false);
+      });
   }, [dispatch]);
 
   return (
     <div className="home-container">
       <NavBar />
-      <img src="/background-homepage.jpg" className="background"/>
+      <img src="/background-homepage.jpg" className="background" />
 
-      
       <SearchBar />
       <div className="filters-and-list">
         <Filters />
-        <DriverList drivers={drivers.length ? drivers : alldrivers} />
+        {loading ? (
+          <p>Loading...</p>
+        ) : drivers.length ? (
+          <DriverList drivers={drivers} />
+        ) : (
+          <h2>No se encontraron drivers con esas especificaciones</h2>
+        )}
       </div>
     </div>
   );
