@@ -20,7 +20,6 @@ route.get('/', async (req, res) => {
   try {
     res.send(teamsdb)
   } catch (error) {
-    console.error('Error en la ruta principal:', error);
     res.status(500).send({ error: 'Error interno del servidor', details: error.message });
   }
 });
