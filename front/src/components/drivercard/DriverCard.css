@@ -53,5 +53,11 @@
   position: relative;
   z-index: 1; /* Añadido: Asegura que el texto esté sobre la imagen */
   text-decoration: none; /* Añadido: Evitar subrayado en equipos y otros elementos */
-  font-size: small
+  font-size: small;
+  overflow-wrap: break-word;
+}
+
+
+.link{
+  text-decoration: none;
 }

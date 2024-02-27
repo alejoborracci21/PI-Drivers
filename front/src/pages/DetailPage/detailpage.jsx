@@ -57,11 +57,11 @@ const DetailPage = () => {
         <div className="data">
         <h1>{`${driver.name} ${driver.surname}`}</h1>
         <p>ID: {id}</p>
-        <p>Fecha de Nacimiento: {driver.dob}</p>
-        <p>Equipos: {driver.teams}</p>
-        <p>Nacionalidad: {driver.nationality}</p>
-        <p>Descripción: {driver.description}</p>
-        <p>Apodo: {driver.driverRef ? driver.driverRef : "Ninguno"}</p>
+        <p>Date of birthdate: {driver.dob}</p>
+        <p>Teams: {driver.teams}</p>
+        <p>Nation: {driver.nationality}</p>
+        <p>Description: {driver.description}</p>
+        <p>Reference: {driver.driverRef ? driver.driverRef : "Ninguno"}</p>
         </div>
        
         

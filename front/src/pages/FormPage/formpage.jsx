@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import NavBar from "../../components/navbar/navbar";
 import "./FormPage.css";
 import axios from "axios";
+import validations from "../../controllers/validations";
 
 const FormPage = () => {
   const [forename, setFirstName] = useState("");
@@ -54,24 +55,25 @@ const FormPage = () => {
       description: description,
       teams: teams,
     };
-    // Envía el objeto del nuevo driver a tu lógica de aplicación (por ejemplo, mediante una acción de Redux o una solicitud AJAX)
 
-    if(newDriver){
-      try {
-      window.alert(`New Driver added: ${newDriver.name.forename}`)
-      setFirstName("")
-      setBirthdate("")
-      setDescription("")
-      setImageURL("")
-      setNationality("")
-      setSelectedTeams("")
-      setLastName("")
-      return await axios.post('http://localhost:3001/drivers', newDriver)
-    } catch (error) {
-      window.alert(error)
+    if (newDriver) {
+      const validation = validations(newDriver);
+      if (validation) {
+        try {
+          window.alert(`New Driver added: ${newDriver.name.forename}`);
+          setFirstName("");
+          setBirthdate("");
+          setDescription("");
+          setImageURL("");
+          setNationality("");
+          setSelectedTeams("");
+          setLastName("");
+          return await axios.post("http://localhost:3001/drivers", newDriver);
+        } catch (error) {
+          window.alert(error);
+        }
+      }
     }
-    }
-    
   };
 
   const handleReset = () => {
@@ -83,66 +85,75 @@ const FormPage = () => {
       <NavBar />
       <form className="create-form" onSubmit={handleSubmit}>
         <h2>Create New Driver</h2>
-        <label className="create-label" htmlFor="firstName">Name:</label>
+        <label className="create-label" htmlFor="firstName">
+          Name:
+        </label>
         <input
           type="text"
           id="firstName"
           value={forename}
           onChange={(e) => setFirstName(e.target.value)}
-          required
           className="create-input"
         />
 
-        <label className="create-label" htmlFor="lastName">Lastname:</label>
+        <label className="create-label" htmlFor="lastName">
+          Lastname:
+        </label>
         <input
-        className="create-input"
+          className="create-input"
           type="text"
           id="lastName"
           value={surname}
           onChange={(e) => setLastName(e.target.value)}
-          required
         />
 
-        <label className="create-label" htmlFor="nationality">Nation:</label>
+        <label className="create-label" htmlFor="nationality">
+          Nation:
+        </label>
         <input
-        className="create-input"
+          className="create-input"
           type="text"
           id="nationality"
           value={nation}
           onChange={(e) => setNationality(e.target.value)}
-          required
         />
 
-        <label className="create-label" htmlFor="imageURL">Image:</label>
+        <label className="create-label" htmlFor="imageURL">
+          Image:
+        </label>
         <input
-        className="create-input"
+          className="create-input"
           type="text"
           id="imageURL"
           value={image}
           onChange={(e) => setImageURL(e.target.value)}
         />
 
-        <label className="create-label" htmlFor="birthdate">Date of birthdate:</label>
+        <label className="create-label" htmlFor="birthdate">
+          Date of birthdate:
+        </label>
         <input
-        className="create-input"
+          className="create-input"
           type="date"
           id="birthdate"
           value={dob}
           onChange={(e) => setBirthdate(e.target.value)}
-          required
         />
 
-        <label className="create-label" htmlFor="description">Description:</label>
+        <label className="create-label" htmlFor="description">
+          Description:
+        </label>
         <textarea
-        className="create-input"
+          className="create-input"
           id="description"
           rows="4"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          required
         ></textarea>
 
-        <label className="create-label" htmlFor="teams">Teams:</label>
+        <label className="create-label" htmlFor="teams">
+          Teams:
+        </label>
         <p>{teams}</p>
         <select className="create-select" id="teams" multiple>
           {allTeams.map((team) => (
@@ -151,8 +162,12 @@ const FormPage = () => {
             </option>
           ))}
         </select>
-        <button className="create-button" type="button"onClick={handleReset}>Reset teams</button>
-        <button className="create-button" type="submit">Create driver</button>
+        <button className="create-button" type="button" onClick={handleReset}>
+          Reset teams
+        </button>
+        <button className="create-button" type="submit">
+          Create driver
+        </button>
       </form>
     </div>
   );

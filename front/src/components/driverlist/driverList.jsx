@@ -29,10 +29,18 @@ const DriverList = ({ drivers }) => {
 
   //Función que calcula y devuelve un array con las páginas visibles en función a la página actual, la cantidad máxima de páginas visibles y la cantidad total de páginas.
   const getVisiblePages = () => {
+
+
+    // halfvisible representa la cantidad de paginas que se van a ver de cada lado de la pagina actual
     const halfVisible = Math.floor(maxVisiblePages / 2);
+
+    // calculo el inicio del rango de páginas visibles
     const startPage = Math.max(currentPage - halfVisible, 1);
+
+    // calcula el extremo del rango de páginas visibles
     const endPage = Math.min(startPage + maxVisiblePages - 1, totalPages);
 
+    //creamos un nuevo array con la longitud igual al número de páginas visibles
     return Array.from({ length: endPage - startPage + 1 }, (_, index) => startPage + index);
   };
 
