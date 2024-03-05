@@ -5,6 +5,7 @@ import {
   ORDER_DATE,
   ORDER_NAME,
   SET_DRIVERS,
+  NUMBER,
 } from "../actions/types";
 
 const initialstate = {
@@ -76,26 +77,31 @@ export default function rootReducer(state = initialstate, { type, payload }) {
       }
       break;
 
-      case ORDER_DATE: {
+    case ORDER_DATE:
+      {
         const sortedDrivers = state.drivers.slice(); // Crear una copia de la matriz para evitar mutar el estado directamente
-      
+
         if (payload === "asc") {
           sortedDrivers.sort((a, b) => {
             //Restamos el año actual menos el año de nacimiento del driver
-            const ageA = new Date().getFullYear() - new Date(a.dob).getFullYear();
-            const ageB = new Date().getFullYear() - new Date(b.dob).getFullYear();
+            const ageA =
+              new Date().getFullYear() - new Date(a.dob).getFullYear();
+            const ageB =
+              new Date().getFullYear() - new Date(b.dob).getFullYear();
 
             //Y ordenamos el menor primero
             return ageA - ageB;
           });
         } else if (payload === "des") {
           sortedDrivers.sort((a, b) => {
-            const ageA = new Date().getFullYear() - new Date(a.dob).getFullYear();
-            const ageB = new Date().getFullYear() - new Date(b.dob).getFullYear();
+            const ageA =
+              new Date().getFullYear() - new Date(a.dob).getFullYear();
+            const ageB =
+              new Date().getFullYear() - new Date(b.dob).getFullYear();
             return ageB - ageA;
           });
         }
-      
+
         return {
           ...state,
           drivers: sortedDrivers,
@@ -103,24 +109,51 @@ export default function rootReducer(state = initialstate, { type, payload }) {
       }
       break;
 
-      case ORDER_NAME: {
-        // Crear una copia del estado para evitar mutar el estado directamente
-        const sortedDrivers = state.drivers.slice(); 
-        
-        //localeCompare compara las cadenas de texto y devuelve un booleano
-        if (payload === "asc") {
-          //si el nombre de a es true comparado con el nombre de b (ordea a y luego b)
-          sortedDrivers.sort((a, b) => a.name.forename.localeCompare(b.name.forename));
-        } else if (payload === "des") {
-          //si el nombre de b es true comparado con el nombre de a (ordena b y luego a)
-          sortedDrivers.sort((a, b) => b.name.forename.localeCompare(a.name.forename));
-        }
-      
+    case ORDER_NAME: {
+      // Crear una copia del estado para evitar mutar el estado directamente
+      const sortedDrivers = state.drivers.slice();
+
+      //localeCompare compara las cadenas de texto y devuelve un booleano
+      if (payload === "asc") {
+        //si el nombre de a es true comparado con el nombre de b (ordea a y luego b)
+        sortedDrivers.sort((a, b) =>
+          a.name.forename.localeCompare(b.name.forename)
+        );
+      } else if (payload === "des") {
+        //si el nombre de b es true comparado con el nombre de a (ordena b y luego a)
+        sortedDrivers.sort((a, b) =>
+          b.name.forename.localeCompare(a.name.forename)
+        );
+      }
+
+      return {
+        ...state,
+        drivers: sortedDrivers,
+      };
+    }
+
+    case NUMBER: {
+      if (payload == "mayor") {
+        const filtered = state.drivers.filter((driver) => {
+          return driver.number > 50;
+        });
         return {
           ...state,
-          drivers: sortedDrivers,
+          drivers: filtered,
         };
       }
+
+      if (payload == "menor") {
+        const filtered = state.drivers.filter((driver) => {
+          return driver.number < 50;
+        });
+
+        return {
+          ...state,
+          drivers: filtered,
+        };
+      }
+    }
     case SEARCH: {
       const filtered = state.drivers.filter((driver) => {
         const name = driver.name.forename;
@@ -132,18 +165,17 @@ export default function rootReducer(state = initialstate, { type, payload }) {
           return driver;
         }
       });
-      if(filtered){
+      if (filtered) {
         return {
-        ...state,
-        drivers: filtered,
-      };
-      }else{
+          ...state,
+          drivers: filtered,
+        };
+      } else {
         return {
           ...state,
           drivers: [],
-        }
+        };
       }
-      
     }
 
     default:

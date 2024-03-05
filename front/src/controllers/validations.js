@@ -9,7 +9,7 @@ const validation = (newDriver) => {
                     if(newDriver.teams.length >= 1){
                         return true
                     }else{
-                        return window.alert("enter at least one team - Ingrese al menos un equipo")
+                        return window.alert("Enter at least one team - Ingrese al menos un equipo")
                     }
                 }else{
                     return window.alert("Description very small - La descripcion es muy corta")

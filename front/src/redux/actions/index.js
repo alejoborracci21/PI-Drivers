@@ -1,5 +1,5 @@
 import axios from "axios";
-import { SEARCH, FILTER_TEAM, FILTER_PLATFORM , ORDER_DATE, ORDER_NAME, SET_DRIVERS } from "./types";
+import {NUMBER, SEARCH, FILTER_TEAM, FILTER_PLATFORM , ORDER_DATE, ORDER_NAME, SET_DRIVERS } from "./types";
 
 export const getAllDrivers = () => async (dispatch) => {
     try {
@@ -13,6 +13,14 @@ export const getAllDrivers = () => async (dispatch) => {
       console.error('Error al obtener conductores:', error);
     }
   };
+
+export function FilterNumber (orden) {
+    return {
+        type: NUMBER,
+        payload: orden
+    }
+}
+
 
 
 export function FilterTeam (team) {

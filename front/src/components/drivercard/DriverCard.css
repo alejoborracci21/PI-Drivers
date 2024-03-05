@@ -16,7 +16,7 @@
 }
 
 .card-div:hover{
-  transform: scale(1.05); /* Aumenta el tamaño al pasar el mouse */
+  transform: scale(1.05);
 }
 
 .card-div img {
@@ -33,26 +33,26 @@
   padding: 10px;
   width: 100%;
   box-sizing: border-box;
-  height: 100%; /* Añadido para ocupar todo el espacio vertical disponible */
+  height: 100%;
 }
 
 .card-details h2 {
   margin: 0;
   margin-bottom: 5px;
-  color: #ffffff; /* Cambiado a blanco para mejorar la visibilidad */
+  color: #ffffff;
   position: relative;
-  z-index: 1; /* Añadido: Asegura que el texto esté sobre la imagen */
-  text-decoration: underline; /* Añadido: Subrayar solo el nombre */
+  z-index: 1;
+  text-decoration: underline;
   
 }
 
 .card-details h3,
 .card-details p {
   margin: 0;
-  color: #ffffff; /* Cambiado a blanco para mejorar la visibilidad */
+  color: #ffffff; 
   position: relative;
-  z-index: 1; /* Añadido: Asegura que el texto esté sobre la imagen */
-  text-decoration: none; /* Añadido: Evitar subrayado en equipos y otros elementos */
+  z-index: 1; 
+  text-decoration: none;
   font-size: small;
   overflow-wrap: break-word;
 }

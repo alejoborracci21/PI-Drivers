@@ -1,4 +1,3 @@
-// driverList.jsx
 import React, { useState } from "react";
 import DriverCard from "../drivercard/driverCard";
 import './driverList.css';

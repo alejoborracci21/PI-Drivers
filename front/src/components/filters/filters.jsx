@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import axios from 'axios';
-import { FilterTeam, FilterPlatform, orderByDate, orderByName } from "../../redux/actions";
+import { FilterNumber, FilterTeam, FilterPlatform, orderByDate, orderByName } from "../../redux/actions";
 import './filters.css'
 
 const Filters = () => {
@@ -49,6 +49,11 @@ const Filters = () => {
     dispatch(orderByDate(selectedOrder))
   }
 
+  const handleNumber = (event) => {
+    const selected = event.target.value;
+    dispatch(FilterNumber(selected))
+  }
+
   return (
     <div className="filters-container">
       <div className="filter-item">
@@ -85,6 +90,14 @@ const Filters = () => {
         <select value={orderAlfabetic} onChange={handleAlfabetic}>
           <option value="asc">Upward</option>
           <option value="des">Falling</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Filter for number</label>
+        <select onChange={handleNumber}>
+          <option value="mayor">Mayores a 50</option>
+          <option value="menor">Menores a 50</option>
         </select>
       </div>
     </div>
