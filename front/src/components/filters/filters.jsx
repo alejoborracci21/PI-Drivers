@@ -93,13 +93,6 @@ const Filters = () => {
         </select>
       </div>
 
-      <div>
-        <label>Filter for number</label>
-        <select onChange={handleNumber}>
-          <option value="mayor">Mayores a 50</option>
-          <option value="menor">Menores a 50</option>
-        </select>
-      </div>
     </div>
   );
 };
